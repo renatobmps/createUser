@@ -25,6 +25,10 @@ interface CreateUserReq {
     email: string;
 }
 
+interface CreateUserRes {
+    emailId: string;
+}
+
 class CreateUser {
     private _repository: CreateUserRepository;
     private _mailService: CreateUserMail;
@@ -37,8 +41,7 @@ class CreateUser {
         this._mailService = mailService;
     }
 
-    async execute({ email, password, username }: CreateUserReq) {
-
+    async execute({ email, password, username }: CreateUserReq): Promise<CreateUserRes> {
         const user = new User({
             email: new Email(email),
             password: new Password({
@@ -57,6 +60,10 @@ class CreateUser {
 
         const emailId = await this._repository.createUser(user);
         await this._mailService.sendEmailValidate(user.email.value, emailId);
+
+        return {
+            emailId,
+        };
     }
 }
 

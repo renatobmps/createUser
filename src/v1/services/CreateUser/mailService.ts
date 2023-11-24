@@ -6,7 +6,7 @@ class MailService extends NodemailerMailService implements CreateUserMail {
     sendEmailValidate(emailAddress: string, emailHash: string): Promise<string> {
         return new Promise(async (resolve, reject) => {
             const html = await ejs.renderFile("src/mail/welcome.ejs", {
-                confirmationLink: `${process.env.HOST}api/v1/mail/${emailHash}`
+                confirmationLink: `${process.env.HOST}api/v1/mail/validate/${emailHash}`
             });
 
             this._transport.sendMail({

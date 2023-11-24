@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome</title>
+    <%- include('style.ejs') %>
+  </head>
+  <body>
+    <h1>Hi there!</h1>
+    <p>
+      Just confirming your e-mail address.
+      <a href="<%= confirmationLink %>">Click here</a> to confirm your e-mail to
+      allow platform login or copy and past the link below in your browser.
+    </p>
+    <a href="<%= confirmationLink %>"><%= confirmationLink %></a>
+    <p>Thank you!</p>
+    <br />
+    <p>#URTheBest</p>
+  </body>
+</html>

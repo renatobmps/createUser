@@ -15,5 +15,5 @@ app.use('/api/v1/user', user);
 app.use('/api/v1/mail', mail);
 
 app.listen(process.env.PORT, () => {
-    console.log(`Server is running: ${process.env.HOST}`)
+    console.info(`Server is running: ${process.env.HOST}`)
 });

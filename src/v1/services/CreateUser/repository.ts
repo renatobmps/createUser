@@ -1,9 +1,9 @@
-import { PrismaClient } from '@prisma/client';
 import { CreateUserRepository } from ".";
 import User from "./User";
+import PrismaInstance from '../../../lib/PrismaInstance';
 
 class Repository implements CreateUserRepository {
-    private _prisma = new PrismaClient();
+    private _prisma = PrismaInstance;
 
     findDuplicateByEmail(email: string): Promise<unknown | null> {
         return this._prisma.userEmail.findFirst({
